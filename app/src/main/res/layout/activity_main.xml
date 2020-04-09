@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,14 +16,18 @@
 
         <EditText
             android:id="@+id/editTextSearch"
-            android:layout_width="wrap_content"
+            android:layout_width="321dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_toStartOf="@+id/imageButtonSearch"
+            android:layout_toLeftOf="@+id/imageButtonSearch"
             android:hint="Buscar una lista de reproducción"></EditText>
 
         <ImageButton
@@ -33,9 +37,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="8dp"
             app:srcCompat="@android:drawable/ic_menu_search" />
 
     </RelativeLayout>

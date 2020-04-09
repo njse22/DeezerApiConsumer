@@ -5,6 +5,8 @@ import android.text.style.UpdateLayout;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.bumptech.glide.Glide;
+import com.example.deezerapiconsumer.R;
 import com.example.deezerapiconsumer.entity.Playlist;
 import com.example.deezerapiconsumer.entity.Track;
 import com.example.deezerapiconsumer.util.Constants;
@@ -53,7 +55,9 @@ public class ControllerPlaylist implements HTTPSWeb.OnResponseListener, AdapterV
         Playlist playlist = gson.fromJson(response, Playlist.class);
         activity.runOnUiThread(
                 () -> {
-                    // La imagen ?
+                    Glide.with(activity).load(
+                            playlist.getPicture()
+                    ).centerCrop().placeholder(R.drawable.ic_launcher_background).into(activity.getImageViewList());
                     activity.getTextViewNameList().setText(playlist.getTitle());
                     activity.getTextViewDescription().setText(playlist.getDescription());
                     activity.getTextViewSongs().setText(playlist.getNb_tracks()+"");
@@ -70,7 +74,7 @@ public class ControllerPlaylist implements HTTPSWeb.OnResponseListener, AdapterV
                     Track track = (Track) activity.getAdapter().getItem(position);
                     Intent i = new Intent(activity, TrackActivity.class);
                     i.putExtra("title", track.getTitle());
-                    i.putExtra("picture", track.getAlbum().getCover());
+                    i.putExtra("picture", track.getAlbum().getCover_small());
                     i.putExtra("artist", track.getArtist().getName());
                     i.putExtra("duration", track.getDuration());
                     i.putExtra("link", track.getPreview());

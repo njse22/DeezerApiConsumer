@@ -5,17 +5,17 @@ import android.net.Uri;
 import android.provider.SyncStateContract;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+import com.example.deezerapiconsumer.R;
 import com.example.deezerapiconsumer.entity.Track;
 import com.example.deezerapiconsumer.util.Constants;
 import com.example.deezerapiconsumer.util.HTTPSWeb;
 import com.example.deezerapiconsumer.view.TrackActivity;
 import com.google.gson.Gson;
 
-public class ControllerTrack implements HTTPSWeb.OnResponseListener, View.OnClickListener {
+public class ControllerTrack implements View.OnClickListener {
 
     private TrackActivity activity;
-    private HTTPSWeb web;
-    private Gson gson;
 
     public ControllerTrack(TrackActivity activity) {
         this.activity = activity;
@@ -23,14 +23,13 @@ public class ControllerTrack implements HTTPSWeb.OnResponseListener, View.OnClic
     }
 
     public void init(){
-        web = new HTTPSWeb();
-        web.setListener(this);
-        gson = new Gson();
-
         activity.getTextTitle().setText((String)activity.getIntent().getExtras().get("title"));
         activity.getTextArtist().setText((String)activity.getIntent().getExtras().get("artist"));
         activity.getTextAlbum().setText((String)activity.getIntent().getExtras().get("album"));
         activity.getTextDuration().setText( ""+(long)activity.getIntent().getExtras().get("duration"));
+        Glide.with(activity).load(
+                (String)activity.getIntent().getExtras().get("picture")
+        ).centerCrop().placeholder(R.drawable.ic_launcher_background).into(activity.getImageTrack());
         activity.getListenBtn().setOnClickListener(this);
 
     }
@@ -52,8 +51,4 @@ public class ControllerTrack implements HTTPSWeb.OnResponseListener, View.OnClic
         ).start();
     }
 
-    @Override
-    public void onResponse(int callbackID, String response) {
-
-    }
 }

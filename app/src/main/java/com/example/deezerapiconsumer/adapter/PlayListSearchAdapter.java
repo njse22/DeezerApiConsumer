@@ -1,5 +1,6 @@
 package com.example.deezerapiconsumer.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,13 +50,14 @@ public class PlayListSearchAdapter extends BaseAdapter {
     }
 
     // Se carga un objeto visible a la vez
+    @SuppressLint("ResourceType")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View playlistview = inflater.inflate(R.layout.playlist_adapter, null);
 
-        ImageView playlistImage =  playlistview.findViewById(R.id.playlistImage);
+        playlistview.findViewById(R.id.playlistImage);
         TextView textTitle = playlistview.findViewById(R.id.textTitle);
         TextView textCreator = playlistview.findViewById(R.id.textArtist);
         TextView textNTracks = playlistview.findViewById(R.id.textDate);
@@ -64,13 +66,16 @@ public class PlayListSearchAdapter extends BaseAdapter {
         textCreator.setText(playlists.get(position).getUser().getName());
         textNTracks.setText(""+ playlists.get(position).getNb_tracks());
 
-        new Thread(
-                () -> {
-                    Glide.with(playlistview).load(
-                            playlists.get(position).getPicture()
-                    ).centerCrop().into(playlistImage);
-                }
-        );
+        final ImageView playlistImage = playlistview.findViewById(R.id.playlistImage);
+
+        String url = playlists.get(position).getPicture();
+
+        Glide
+                .with(playlistview)
+                .load(url)
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(playlistImage);
 
         return playlistview;
     }

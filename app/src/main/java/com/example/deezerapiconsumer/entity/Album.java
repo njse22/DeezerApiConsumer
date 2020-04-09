@@ -5,14 +5,16 @@ public class Album {
     private String title;
     private String link;
     private String cover;
+    private String cover_small;
 
     public Album() {
     }
 
-    public Album(String title, String link,String cover) {
+    public Album(String title, String link,String cover, String cover_small) {
         this.title = title;
         this.link = link;
         this.cover = cover;
+        this.cover_small = cover_small;
     }
 
     public String getTitle() {
@@ -37,5 +39,13 @@ public class Album {
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    public String getCover_small() {
+        return cover_small;
+    }
+
+    public void setCover_small(String cover_small) {
+        this.cover_small = cover_small;
     }
 }

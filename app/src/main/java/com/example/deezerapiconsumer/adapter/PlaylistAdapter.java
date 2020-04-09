@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.deezerapiconsumer.R;
 import com.example.deezerapiconsumer.entity.Track;
 
@@ -41,7 +42,7 @@ public class PlaylistAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View trackListview = inflater.inflate(R.layout.track_adapter, null);
 
-        ImageView playlistImage = trackListview.findViewById(R.id.playlistImage);
+        final ImageView playlistImage = trackListview.findViewById(R.id.playlistImage);
         TextView textTitle = trackListview.findViewById(R.id.textTitle); // titulo
         TextView textArtist = trackListview.findViewById(R.id.textArtist); // artista
         TextView textDate = trackListview.findViewById(R.id.textDate); // año lanzamiento
@@ -49,6 +50,15 @@ public class PlaylistAdapter extends BaseAdapter {
         textTitle.setText(tracks.get(position).getTitle());
         textArtist.setText("Artista: " + tracks.get(position).getArtist().getName());
         textDate.setText( "Fecha: " + tracks.get(position).getRelease_date());
+
+        String url = tracks.get(position).getAlbum().getCover();
+
+        Glide
+                .with(trackListview)
+                .load(url)
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(playlistImage);
 
         return trackListview;
     }
