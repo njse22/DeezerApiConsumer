@@ -5,24 +5,28 @@ public class Playlist {
     private String title;
     private String description;
     private String link;
-    private int nb_tracks;
+    private long nb_tracks;
     private String picture;
-    private String fans;
-    private Creator creator;
-    private Data data;
+    private long fans;
+    private User user;
+    private TracksContainer tracks;
+    private long id;
 
     public Playlist() {
     }
 
-    public Playlist(String title, String description, String link, int nb_tracks, String picture, String fans, Creator creator, Data data) {
+    public Playlist(String title, String description, String link,
+                    int nb_tracks, String picture, long fans,
+                    User user, TracksContainer data, long id) {
         this.title = title;
         this.description = description;
         this.link = link;
         this.nb_tracks = nb_tracks;
         this.picture = picture;
         this.fans = fans;
-        this.creator = creator;
-        this.data = data;
+        this.user = user;
+        this.tracks = data;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -49,7 +53,7 @@ public class Playlist {
         this.link = link;
     }
 
-    public int getNb_tracks() {
+    public long getNb_tracks() {
         return nb_tracks;
     }
 
@@ -65,27 +69,35 @@ public class Playlist {
         this.picture = picture;
     }
 
-    public String getFans() {
+    public long getFans() {
         return fans;
     }
 
-    public void setFans(String fans) {
+    public void setFans(long fans) {
         this.fans = fans;
     }
 
-    public Creator getCreator() {
-        return creator;
+    public User getUser() {
+        return user;
     }
 
-    public void setCreator(Creator creator) {
-        this.creator = creator;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Data getData() {
-        return data;
+    public TracksContainer getTracks() {
+        return tracks;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setTracks(TracksContainer tracks) {
+        this.tracks = tracks;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

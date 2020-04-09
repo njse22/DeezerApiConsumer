@@ -4,40 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.MainActivity">
+    tools:context=".view.MainActivity">
 
     <RelativeLayout
-        android:layout_width="0dp"
+        android:id="@+id/relativeLayout"
+        android:layout_width="390dp"
         android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <EditText
             android:id="@+id/editTextSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:hint="Buscar una lista de reproducción"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"></EditText>
+            android:hint="Buscar una lista de reproducción"></EditText>
+
         <ImageButton
             android:id="@+id/imageButtonSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            app:srcCompat="@android:drawable/ic_menu_search"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
     </RelativeLayout>
+
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listViewPlaylists"></ListView>
+        android:id="@+id/listViewPlaylists"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"></ListView>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

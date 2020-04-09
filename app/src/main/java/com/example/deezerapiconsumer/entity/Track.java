@@ -2,9 +2,10 @@ package com.example.deezerapiconsumer.entity;
 
 public class Track {
 
+    private long id;
     private String title;
     private String link;
-    private int duration;
+    private long duration;
     private String release_date;
     private String preview;
     private Artist artist;
@@ -13,7 +14,8 @@ public class Track {
     public Track() {
     }
 
-    public Track(String title, String link, int duration, String release_date, String preview, Artist artist, Album album) {
+    public Track(long id,String title, String link, long duration, String release_date, String preview, Artist artist, Album album) {
+        this.id = id;
         this.title = title;
         this.link = link;
         this.duration = duration;
@@ -21,6 +23,14 @@ public class Track {
         this.preview = preview;
         this.artist = artist;
         this.album = album;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -39,11 +49,11 @@ public class Track {
         this.link = link;
     }
 
-    public int getDuration() {
+    public long getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 
