@@ -25,8 +25,11 @@ public class ControllerTrack implements View.OnClickListener {
     public void init(){
         activity.getTextTitle().setText((String)activity.getIntent().getExtras().get("title"));
         activity.getTextArtist().setText((String)activity.getIntent().getExtras().get("artist"));
-        activity.getTextAlbum().setText((String)activity.getIntent().getExtras().get("album"));
-        activity.getTextDuration().setText( ""+(long)activity.getIntent().getExtras().get("duration"));
+        activity.getTextAlbum().setText("Album: "+ (String)activity.getIntent().getExtras().get("album"));
+        long time = (long)activity.getIntent().getExtras().get("duration");
+        long minutes = time/60;
+        long seconds = time%60;
+        activity.getTextDuration().setText( "Duration: " + minutes +":"+ seconds);
         Glide.with(activity).load(
                 (String)activity.getIntent().getExtras().get("picture")
         ).centerCrop().placeholder(R.drawable.ic_launcher_background).into(activity.getImageTrack());

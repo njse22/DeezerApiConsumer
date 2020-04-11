@@ -60,8 +60,8 @@ public class ControllerPlaylist implements HTTPSWeb.OnResponseListener, AdapterV
                     ).centerCrop().placeholder(R.drawable.ic_launcher_background).into(activity.getImageViewList());
                     activity.getTextViewNameList().setText(playlist.getTitle());
                     activity.getTextViewDescription().setText(playlist.getDescription());
-                    activity.getTextViewSongs().setText(playlist.getNb_tracks()+"");
-                    activity.getTextViewFans().setText(playlist.getFans() + "");
+                    activity.getTextViewSongs().setText("Songs: "+playlist.getNb_tracks()+"");
+                    activity.getTextViewFans().setText("Fans: " +playlist.getFans() + "");
                 }
         );
         auxControllerPlaylist = new AuxControllerPlaylist(playlist, activity);
@@ -74,7 +74,7 @@ public class ControllerPlaylist implements HTTPSWeb.OnResponseListener, AdapterV
                     Track track = (Track) activity.getAdapter().getItem(position);
                     Intent i = new Intent(activity, TrackActivity.class);
                     i.putExtra("title", track.getTitle());
-                    i.putExtra("picture", track.getAlbum().getCover_small());
+                    i.putExtra("picture", track.getAlbum().getCover());
                     i.putExtra("artist", track.getArtist().getName());
                     i.putExtra("duration", track.getDuration());
                     i.putExtra("link", track.getPreview());

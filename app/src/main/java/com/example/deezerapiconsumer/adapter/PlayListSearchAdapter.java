@@ -64,7 +64,7 @@ public class PlayListSearchAdapter extends BaseAdapter {
 
         textTitle.setText(playlists.get(position).getTitle());
         textCreator.setText(playlists.get(position).getUser().getName());
-        textNTracks.setText(""+ playlists.get(position).getNb_tracks());
+        textNTracks.setText("Songs: "+ playlists.get(position).getNb_tracks());
 
         final ImageView playlistImage = playlistview.findViewById(R.id.playlistImage);
 
