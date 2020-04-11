@@ -29,7 +29,7 @@ public class ControllerTrack implements View.OnClickListener {
         long time = (long)activity.getIntent().getExtras().get("duration");
         long minutes = time/60;
         long seconds = time%60;
-        activity.getTextDuration().setText( "Duration: " + minutes +":"+ seconds);
+        activity.getTextDuration().setText(minutes +":"+ seconds);
         Glide.with(activity).load(
                 (String)activity.getIntent().getExtras().get("picture")
         ).centerCrop().placeholder(R.drawable.ic_launcher_background).into(activity.getImageTrack());
