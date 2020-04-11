@@ -3,7 +3,6 @@
 
 This repository is a android app that consumes the Deezer API to search playlists 
 
-<center>
-    <img src="DezzerApiConsumer.gif"/>
-    <br/><br/>
-</center>
+<p align="center">
+  <img src="DezzerApiConsumer.gif"/>
+</p>
