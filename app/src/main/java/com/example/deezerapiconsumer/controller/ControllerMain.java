@@ -1,11 +1,8 @@
 package com.example.deezerapiconsumer.controller;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 
-import com.bumptech.glide.Glide;
 import com.example.deezerapiconsumer.R;
 import com.example.deezerapiconsumer.entity.Playlist;
 import com.example.deezerapiconsumer.entity.PlaylistContainer;
@@ -15,7 +12,7 @@ import com.example.deezerapiconsumer.view.MainActivity;
 import com.example.deezerapiconsumer.view.PlaylistActivity;
 import com.google.gson.Gson;
 
-public class ControllerMain implements View.OnClickListener, AdapterView.OnItemClickListener, HTTPSWeb.OnResponseListener {
+public class ControllerMain implements View.OnClickListener, HTTPSWeb.OnResponseListener, RecyclerTouchListener.ClickListener {
 
     private MainActivity activity;
     private HTTPSWeb web;
@@ -32,7 +29,10 @@ public class ControllerMain implements View.OnClickListener, AdapterView.OnItemC
         web.setListener(this);
         gson = new Gson();
         activity.getImgButtonSearch().setOnClickListener(this);
-        activity.getListViewPlaylist().setOnItemClickListener(this);
+
+        activity.getRecyclerView().addOnItemTouchListener(new RecyclerTouchListener(
+                activity.getApplicationContext(), activity.getRecyclerView(), this
+        ));
     }
 
     @Override
@@ -50,8 +50,9 @@ public class ControllerMain implements View.OnClickListener, AdapterView.OnItemC
         }
     }
 
+
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onClick(View view, int position) {
         long itemId = ((Playlist)(activity.getAdapter().getItem(position))).getId();
         Intent i = new Intent(activity, PlaylistActivity.class);
         i.putExtra("id", itemId);
@@ -59,17 +60,27 @@ public class ControllerMain implements View.OnClickListener, AdapterView.OnItemC
     }
 
     @Override
+    public void onLongClick(View view, int position) {
+
+    }
+
+    @Override
     public void onResponse(int callbackID, String response) {
         switch (callbackID){
             case Constants.SEARCH_CALLBACK:
                 container = gson.fromJson(response, PlaylistContainer.class);
-
                 activity.runOnUiThread(
                         () -> {
-                            activity.getAdapter().setPlaylists(container.getData());
+                            for (int i = 0; i < container.getData().size(); i++ ){
+                                activity.getAdapter().getPlaylists().add(container.getData().get(i));
+                                activity.getAdapter().notifyDataSetChanged();
+                            }
                         }
                 );
                 break;
         }
     }
+
+
 }
+

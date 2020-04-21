@@ -63,11 +63,6 @@ public class PlaylistAdapter extends BaseAdapter {
         return trackListview;
     }
 
-    public void setTracks(ArrayList<Track> tracks) {
-        this.tracks = tracks;
-        notifyDataSetChanged();
-    }
-
     public void addTrack(Track track){
         tracks.add(track);
         notifyDataSetChanged();

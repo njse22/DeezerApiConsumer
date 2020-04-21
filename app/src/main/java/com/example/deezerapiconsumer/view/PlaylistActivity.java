@@ -36,6 +36,7 @@ public class PlaylistActivity extends AppCompatActivity {
         listViewTracks = findViewById(R.id.listViewTracks);
         listViewTracks.setAdapter(adapter);
         controller = new ControllerPlaylist(this);
+
     }
 
     public long getItemId(){
@@ -46,55 +47,28 @@ public class PlaylistActivity extends AppCompatActivity {
         return imageViewList;
     }
 
-    public void setImageViewList(ImageView imageViewList) {
-        this.imageViewList = imageViewList;
-    }
-
     public TextView getTextViewNameList() {
         return textViewNameList;
-    }
-
-    public void setTextViewNameList(TextView textViewNameList) {
-        this.textViewNameList = textViewNameList;
     }
 
     public TextView getTextViewDescription() {
         return textViewDescription;
     }
 
-    public void setTextViewDescription(TextView textViewDescription) {
-        this.textViewDescription = textViewDescription;
-    }
-
     public TextView getTextViewSongs() {
         return textViewSongs;
-    }
-
-    public void setTextViewSongs(TextView textViewSongs) {
-        this.textViewSongs = textViewSongs;
     }
 
     public TextView getTextViewFans() {
         return textViewFans;
     }
 
-    public void setTextViewFans(TextView textViewFans) {
-        this.textViewFans = textViewFans;
-    }
-
     public ListView getListViewTracks() {
         return listViewTracks;
-    }
-
-    public void setListViewTracks(ListView listViewTracks) {
-        this.listViewTracks = listViewTracks;
     }
 
     public PlaylistAdapter getAdapter() {
         return adapter;
     }
 
-    public void setAdapter(PlaylistAdapter adapter) {
-        this.adapter = adapter;
-    }
 }

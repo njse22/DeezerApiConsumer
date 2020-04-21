@@ -40,47 +40,24 @@ public class TrackActivity extends AppCompatActivity {
         return imageTrack;
     }
 
-    public void setImageTrack(ImageView imageTrack) {
-        this.imageTrack = imageTrack;
-    }
-
     public TextView getTextTitle() {
         return textTitle;
-    }
-
-    public void setTextTitle(TextView textTitle) {
-        this.textTitle = textTitle;
     }
 
     public TextView getTextArtist() {
         return textArtist;
     }
 
-    public void setTextArtist(TextView textArtist) {
-        this.textArtist = textArtist;
-    }
-
     public TextView getTextAlbum() {
         return textAlbum;
-    }
-
-    public void setTextAlbum(TextView textAlbum) {
-        this.textAlbum = textAlbum;
     }
 
     public TextView getTextDuration() {
         return textDuration;
     }
 
-    public void setTextDuration(TextView textDuration) {
-        this.textDuration = textDuration;
-    }
-
     public Button getListenBtn() {
         return listenBtn;
     }
-
-    public void setListenBtn(Button listenBtn) {
-        this.listenBtn = listenBtn;
-    }
+    
 }

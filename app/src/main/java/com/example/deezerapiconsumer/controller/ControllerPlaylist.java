@@ -27,15 +27,6 @@ public class ControllerPlaylist implements HTTPSWeb.OnResponseListener, AdapterV
         init();
     }
 
-
-    public PlaylistActivity getActivity() {
-        return activity;
-    }
-
-    public void setActivity(PlaylistActivity activity) {
-        this.activity = activity;
-    }
-
     public void init(){
         gson = new Gson();
         web = new HTTPSWeb();
